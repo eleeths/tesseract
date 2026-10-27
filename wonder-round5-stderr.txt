@@ -1,0 +1,2 @@
+credit check: used=$5.1910 cap=$150.00 est_this_call=$0.6732 prompt_chars=13416
+cost: this_call=$0.6463 cumulative=$5.8373 free_left=$144.1627

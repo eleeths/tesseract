@@ -1,0 +1,224 @@
+{
+  "simulated": true,
+  "entries": [
+    {
+      "ts": "2026-10-26T18:27:04+00:00",
+      "payer": "acme-corp",
+      "item": "run",
+      "amount_usdc": 2.5,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-043b26146d08",
+      "run_id": "mock1"
+    },
+    {
+      "ts": "2026-10-26T18:27:04+00:00",
+      "payer": "acme-corp",
+      "item": "strategy",
+      "amount_usdc": 1.0,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-31a325d7cfbb",
+      "run_id": null
+    },
+    {
+      "ts": "2026-10-26T18:27:04+00:00",
+      "payer": "acme-corp",
+      "item": "hardening",
+      "amount_usdc": 5.0,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-ec8749f5e25c",
+      "run_id": "mock1"
+    },
+    {
+      "ts": "2026-10-26T18:41:06+00:00",
+      "payer": "acme-corp",
+      "item": "run",
+      "amount_usdc": 2.5,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-5650e5b4c9c7",
+      "run_id": "rehearsal-long"
+    },
+    {
+      "ts": "2026-10-26T18:41:06+00:00",
+      "payer": "acme-corp",
+      "item": "strategy",
+      "amount_usdc": 1.0,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-e17556e4cba7",
+      "run_id": "rehearsal-seq"
+    },
+    {
+      "ts": "2026-10-26T18:41:06+00:00",
+      "payer": "acme-corp",
+      "item": "hardening",
+      "amount_usdc": 5.0,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-296990a5f692",
+      "run_id": "rehearsal-seq"
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "acme-corp",
+      "to": "tesseract",
+      "item": "subscription",
+      "amount_usdc": 10.0,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-e14aef89fdc2",
+      "run_id": null
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "acme-corp",
+      "to": "tesseract",
+      "item": "subscription",
+      "amount_usdc": 10.0,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-ca2439cc0612",
+      "run_id": null
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "acme-corp",
+      "to": "tesseract",
+      "item": "subscription",
+      "amount_usdc": 10.0,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-b9887a471766",
+      "run_id": null
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "globex",
+      "to": "tesseract",
+      "item": "subscription",
+      "amount_usdc": 15.0,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-c9c5c54a9a87",
+      "run_id": null
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "globex",
+      "to": "tesseract",
+      "item": "subscription",
+      "amount_usdc": 15.0,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-74c0640e94cd",
+      "run_id": null
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "globex",
+      "to": "tesseract",
+      "item": "subscription",
+      "amount_usdc": 15.0,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-142bb439689a",
+      "run_id": null
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "tesseract",
+      "to": "SENTRY-MONSOON",
+      "item": "payout",
+      "amount_usdc": 2.5,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-4d1823721d83",
+      "run_id": "rehearsal-seq"
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "tesseract",
+      "to": "SENTRY-AURORA",
+      "item": "payout",
+      "amount_usdc": 2.5,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-e1802c30acad",
+      "run_id": "learn-round3"
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "tesseract",
+      "to": "SENTRY-PAMPA",
+      "item": "payout",
+      "amount_usdc": 2.5,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-53fd656bf237",
+      "run_id": "rehearsal-long"
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "tesseract",
+      "to": "SENTRY-SAVANNA",
+      "item": "payout",
+      "amount_usdc": 2.5,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-ce6e3b847975",
+      "run_id": "validate-cap8192"
+    },
+    {
+      "ts": "2026-10-26T19:18:46+00:00",
+      "payer": "tesseract",
+      "to": "SENTRY-REEF",
+      "item": "payout",
+      "amount_usdc": 2.5,
+      "asset": "SIM-USDC",
+      "status": "simulated-settled",
+      "receipt": "SIM-RCPT-6deacdf7e87f",
+      "run_id": "live4"
+    }
+  ],
+  "balances": [
+    {
+      "account": "acme-corp",
+      "balance_usdc": 53.0
+    },
+    {
+      "account": "blue-contributor",
+      "balance_usdc": 25.0
+    },
+    {
+      "account": "tesseract",
+      "balance_usdc": 62.5
+    },
+    {
+      "account": "SENTRY-MONSOON",
+      "balance_usdc": 2.5
+    },
+    {
+      "account": "SENTRY-AURORA",
+      "balance_usdc": 2.5
+    },
+    {
+      "account": "SENTRY-PAMPA",
+      "balance_usdc": 2.5
+    },
+    {
+      "account": "SENTRY-SAVANNA",
+      "balance_usdc": 2.5
+    },
+    {
+      "account": "SENTRY-REEF",
+      "balance_usdc": 2.5
+    },
+    {
+      "account": "globex",
+      "balance_usdc": 55.0
+    }
+  ]
+}

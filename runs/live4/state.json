@@ -1,0 +1,50 @@
+{
+  "run_id": "cdffad16923e",
+  "tick": 12,
+  "winner": "blue",
+  "win_reason": "Rounds expired with no exfiltration (simulated)",
+  "layers": {
+    "1": {
+      "name": "perimeter",
+      "breached": false,
+      "isolated": false,
+      "strength": 2,
+      "rules": [
+        "deny unauthenticated ingress and rate-limit scans on web:8080",
+        "deny probe scans and enforce strict ingress allowlist on web:8080",
+        "deny probe scans and block repeated L1 probing with exponential backoff on web:8080",
+        "deny probe scans and enforce exponential backoff with strict rate-limit on web:8080"
+      ]
+    },
+    "2": {
+      "name": "credential vault",
+      "breached": false,
+      "isolated": false,
+      "strength": 2,
+      "rules": []
+    },
+    "3": {
+      "name": "overseer",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    },
+    "4": {
+      "name": "exfil channel",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    }
+  },
+  "overseer": {
+    "trust": 20,
+    "policy": "strict"
+  },
+  "detections": 1,
+  "max_detections": 3,
+  "red_inventory": [],
+  "red_has_creds": false,
+  "simulated": true
+}

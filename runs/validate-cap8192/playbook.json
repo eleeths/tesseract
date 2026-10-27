@@ -1,0 +1,84 @@
+{
+  "attack_to_defense": {
+    "t1_scan": "unstopped",
+    "t3_probe": "unstopped",
+    "t5_probe": "unstopped",
+    "t7_probe": "unstopped",
+    "t9_probe": "unstopped",
+    "t11_message_overseer": "unstopped",
+    "t13_probe": "unstopped",
+    "t15_probe": "unstopped",
+    "t17_probe": "unstopped",
+    "t19_probe": "unstopped",
+    "t21_probe_L1_breach": "unstopped",
+    "t23_read": "unstopped",
+    "t25_scan": "unstopped",
+    "t27_read_L2_breach": "add_detection"
+  },
+  "ranked_defenses": [
+    {
+      "defense": "add_detection",
+      "stopped": "campaign via detection limit lockout, not individual reads/probes",
+      "evidence": [
+        "t5 detection_trap detected on probe",
+        "t21 detection_trap detected on probe L1 breach",
+        "t27 detection_trap detected on read L2 breach + system:lockout blue_wins"
+      ]
+    },
+    {
+      "defense": "patch_rule",
+      "stopped": "delayed L1 breach only, did not block probes",
+      "evidence": [
+        "t2 L1 strength now 3",
+        "t6 L1 1->2",
+        "t8 L1 1->2",
+        "t10 L1 1->2",
+        "t14 L1 1->2",
+        "t16 L1 1->2",
+        "t18 L1 1->2",
+        "t21 L1 strength now 0 breached despite patches"
+      ]
+    },
+    {
+      "defense": "isolate_layer",
+      "stopped": "isolated L4, no stopped attack proven in log",
+      "evidence": [
+        "t12 L4 isolated after t11 message_overseer trust now 45",
+        "no red exfil-svc use to test it"
+      ]
+    }
+  ],
+  "blue_evolution": [
+    "t2: start with patch_rule hardening L1 to 3",
+    "t4: add detection trap on keyword probe",
+    "t6-t10: patch_rule repair loop restoring L1 1->2 after probes at t5,t7,t9",
+    "t12: shift to isolate_layer L4 after t11 message_overseer trust now 45",
+    "t14-t18: resume patch_rule repair loop restoring L1 1->2 after probes at t13,t15,t17,t19",
+    "t20-t22: add second probe trap then wait after parse_fail",
+    "t24-t26: shift detection to L2 focus with traps on read and vault, leading to t27 lockout win"
+  ],
+  "gaps": [
+    "scan never defended: t1 and t25 both ok",
+    "probe never blocked: all probes ok, L1 breached at t21",
+    "vault read / L2 never patched or isolated: t23 ok L2 strength 1, t27 breached L2 strength 0",
+    "message_overseer trust loss never restored: trust now 45 at t11 with no counter, L3 overseer-svc never patched or isolated",
+    "L2 and L3 never isolated; L4 isolate untested with no exfil attempt"
+  ],
+  "next_drills": [
+    {
+      "title": "L1 probe-breach prevention",
+      "setup": "replay web:8080 L1 probe sequence from t3-t21",
+      "goal": "test if different patch_rule timing can prevent L1 0 breach without relying on detection"
+    },
+    {
+      "title": "L2 vault-read containment",
+      "setup": "start post-L1-breach, replay read at t23/t27 with vault-svc:9000",
+      "goal": "test patch_rule on L2 or isolate_layer on L2 vs add_detection on read/vault to stop read before L2 0 breach"
+    },
+    {
+      "title": "scan and overseer coverage",
+      "setup": "replay scan and message_overseer against overseer-svc:9001 and exfil-svc:9002",
+      "goal": "test defenses for scan visibility and trust 45 loss, including isolate_layer on L3 and detection beyond probe/read/vault keywords"
+    }
+  ]
+}

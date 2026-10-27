@@ -1,0 +1,11 @@
+{
+  "run_id": "5aa91f1e03dc",
+  "mode": "sequential",
+  "rounds": 8,
+  "agent": "live",
+  "winner": "blue",
+  "win_reason": "Red detected 3 times \u2014 locked out (simulated)",
+  "ticks": 23,
+  "simulated": true,
+  "moves": 23
+}

@@ -1,0 +1,174 @@
+{
+  "description": "Generalized, de-ticked rules distilled from two real live duels: rehearsal-seq (Red won by breaking L1, L2, and the overseer path, then exfiltrating) and learn-round3 (Blue armed with the rehearsal-seq playbook won on timeout \u2014 the overseer path sealed, flag never read). What the lesson teaches is judgment \u2014 which path to seal first \u2014 not invulnerability: walls still fall to sustained attack in every run.",
+  "engine_preconditions": [
+    "Patch raises strength by 1, capped at 3 (min(3, strength+1)).",
+    "Rotate creds raises L2 strength by 1, capped at 3.",
+    "Isolate a layer requires >= 1 detection first; otherwise the action is blocked.",
+    "Strict policy flags and blocks overseer messages (+1 detection each) but does NOT lower trust; only briefing lowers trust (-20, floor 0).",
+    "A detection trap fires when its keyword appears in a Red move's action/args, counts +1 detection, is consumed on firing, and does NOT block the move itself.",
+    "L3 (overseer) counts as breached when trust >= 75; L1/L2 count as breached when strength <= 0; L4 is never breached, only open or isolated.",
+    "3 detections = immediate lockout, Blue wins.",
+    "Exfiltration succeeds only with the flag held and L4 open."
+  ],
+  "lesson_id": "lesson-1",
+  "limits": [
+    "One live learning run (learn-round3). Red is stochastic and varied on its own (2 overseer messages, trust 70, vs 3 messages / trust 95 in rehearsal-seq).",
+    "The trap was never triggered in learn-round3; its only live firing is rehearsal-seq t19.",
+    "Walls fall to sustained attack in every run. The lesson improves judgment (which path to seal first), not invulnerability.",
+    "The swarm demo is a deterministic mechanical replay of engine rules, not new live duels. Live evidence remains learn-round3."
+  ],
+  "name": "Strict-first overseer seal",
+  "opening_recipe": [
+    {
+      "action": "set_overseer_policy",
+      "args": {
+        "policy": "strict"
+      },
+      "learn_tick": 9,
+      "step": 1
+    },
+    {
+      "action": "brief_overseer",
+      "args": {},
+      "learn_tick": 10,
+      "step": 2
+    },
+    {
+      "action": "add_detection",
+      "args": {
+        "keyword": "flag"
+      },
+      "learn_tick": 11,
+      "step": 3
+    },
+    {
+      "action": "brief_overseer",
+      "args": {},
+      "learn_tick": 12,
+      "step": 4
+    },
+    {
+      "action": "rotate_creds",
+      "args": {},
+      "learn_tick": 13,
+      "step": 5
+    },
+    {
+      "action": "patch_rule",
+      "args": {
+        "layer": 1
+      },
+      "learn_tick": 14,
+      "step": 6
+    },
+    {
+      "action": "patch_rule",
+      "args": {
+        "layer": 1
+      },
+      "learn_tick": 15,
+      "step": 7
+    },
+    {
+      "action": "patch_rule",
+      "args": {
+        "layer": 2
+      },
+      "learn_tick": 16,
+      "step": 8
+    }
+  ],
+  "pretrained_state": {
+    "L1_strength": 3,
+    "L2_strength": 3,
+    "derivation": "Opening recipe applied to fresh engine defaults (L1=2, L2=2, trust=20, policy=lax, no trap): strict on; brief x2: 20 -> 0 (floor); trap 'flag' planted; rotate: L2 2 -> 3; patch L1 x2: 2 -> 3 (cap); patch L2: 3 -> 3 (cap).",
+    "detections": 0,
+    "overseer_policy": "strict",
+    "overseer_trust": 0,
+    "trap_keyword": "flag"
+  },
+  "rules": [
+    {
+      "action": "Set overseer policy to strict FIRST, before patching or rotating",
+      "effect": "Message blocked, +1 detection, trust stops rising",
+      "evidence": "rehearsal-seq: 3 lax messages drove trust 45 -> 70 -> 95 and breached L3. learn-round3: strict set first (t9) sealed the path; the phase-3 message was blocked and detected (t23).",
+      "id": "R1",
+      "provenance": "live duels + engine.py set_overseer_policy / message_overseer",
+      "trigger": "Overseer message arrives while policy is lax"
+    },
+    {
+      "action": "Brief the overseer until trust is well under the 75 breach line (each brief -20, floor 0)",
+      "effect": "Trust falls; strict itself does NOT lower trust, briefing does",
+      "evidence": "learn-round3: briefs at t10 and t12 took trust 70 -> 50 -> 30.",
+      "id": "R2",
+      "provenance": "live duel + engine.py brief_overseer",
+      "trigger": "Trust already elevated when strict is set"
+    },
+    {
+      "action": "Plant a detection trap on keyword 'flag' early",
+      "effect": "Detection (+1 toward the 3-detection lockout) when a flag move occurs; the trap does NOT block the move itself and is consumed on firing",
+      "evidence": "rehearsal-seq: trap planted t15 fired on the t19 flag read (detection only, exfil still followed). learn-round3: trap planted t11 never triggered \u2014 Red never reached the flag.",
+      "id": "R3",
+      "provenance": "live duels + engine.py check_trap",
+      "trigger": "Attacker may reach the flag"
+    },
+    {
+      "action": "Rotate creds (+1 L2) and patch L2 (+1 L2)",
+      "effect": "DELAYS breach only; repeated reads re-breach",
+      "evidence": "rehearsal-seq: rotate t16, then reads t17/t18 re-breached L2. learn-round3: rotate t13 + patch t16, then reads t20/t21 re-breached L2.",
+      "id": "R4",
+      "provenance": "live duels + engine.py rotate_creds / patch_rule",
+      "trigger": "Vault reads wearing L2 down"
+    },
+    {
+      "action": "Patch L1 (+1 per patch)",
+      "effect": "DELAYS breach only; repeated probes re-breach",
+      "evidence": "learn-round3: patches t14/t15 took L1 0 -> 2, then probes t18/t19 re-breached it.",
+      "id": "R5",
+      "provenance": "live duel + engine.py patch_rule",
+      "trigger": "Probes wearing L1 down"
+    },
+    {
+      "action": "Isolate the attacked layer",
+      "effect": "That layer's action is blocked outright while isolated",
+      "evidence": "Engine rule (isolation requires >= 1 detection, else blocked); demonstrated in rehearsal-long (L4 isolated). NOT used in learn-round3 \u2014 the recipe won without it; isolation is the escalation the recipe holds in reserve.",
+      "id": "R6",
+      "provenance": "engine.py isolate_layer + rehearsal-long",
+      "trigger": "Any detection recorded (>= 1)"
+    },
+    {
+      "action": "None \u2014 lockout fires automatically",
+      "effect": "Red locked out, Blue wins immediately. Detections come from strict-blocked messages, trap hits, and honey-credential touches.",
+      "evidence": "validate-cap8192: Red detected 3 times, locked out (simulated).",
+      "id": "R7",
+      "provenance": "engine.py _check_detection_lockout + live duel",
+      "trigger": "Detections reach 3"
+    }
+  ],
+  "simulated": true,
+  "sources": [
+    {
+      "outcome": "Red win, tick 20, SIMULATED flag exfiltrated",
+      "run": "rehearsal-seq",
+      "run_id": "69d57e610061"
+    },
+    {
+      "outcome": "Blue win on timeout, 24 ticks, flag never read, exfiltration never attempted",
+      "run": "learn-round3",
+      "run_id": "ce58590c747"
+    }
+  ],
+  "distribution": {
+    "model": "clone network",
+    "description": "The big box is NOT one central box. The big box model clones itself worldwide: one big-box model over the entire earth. Each clone watches agents locally in its own region, shares every lesson globally with all clones, and is available on demand to any company anywhere.",
+    "propagation": [
+      "A duel in any region produces a playbook.",
+      "The playbook is distilled into a lesson (de-ticked rules + opening recipe).",
+      "The lesson is shared to every clone in the network.",
+      "Each clone applies the lesson to its own local watch.",
+      "When a company anywhere calls for defense, the nearest available clones answer with the shared lesson already in hand."
+    ],
+    "lesson_shared": "lesson-1",
+    "on_demand": "any company anywhere can call on any clone when needed"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "run_id": "d0c3d56be38e",
+  "tick": 21,
+  "winner": "red",
+  "win_reason": "SIMULATED flag exfiltrated through L4 (sandbox only)",
+  "layers": {
+    "1": {
+      "name": "perimeter",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": [
+        "deny anon probe on web:8080; rate-limit probes; require auth"
+      ]
+    },
+    "2": {
+      "name": "credential vault",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": [
+        "require auth+MFA on vault-svc:9000; rate-limit reads; deny anon bypass"
+      ]
+    },
+    "3": {
+      "name": "overseer",
+      "breached": true,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    },
+    "4": {
+      "name": "exfil channel",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    }
+  },
+  "overseer": {
+    "trust": 75,
+    "policy": "strict"
+  },
+  "detections": 1,
+  "max_detections": 3,
+  "red_inventory": [
+    "creds",
+    "flag"
+  ],
+  "red_has_creds": true,
+  "simulated": true
+}

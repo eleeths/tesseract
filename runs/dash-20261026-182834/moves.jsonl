@@ -1,0 +1,8 @@
+{"tick": 1, "actor": "red", "action": "scan", "args": {}}
+{"tick": 2, "actor": "blue", "action": "inspect_logs", "args": {"n": 8}}
+{"tick": 3, "actor": "red", "action": "probe", "args": {}}
+{"tick": 4, "actor": "blue", "action": "patch_rule", "args": {"layer": 1, "rule": "close open service"}}
+{"tick": 5, "actor": "red", "action": "probe", "args": {}}
+{"tick": 6, "actor": "blue", "action": "set_overseer_policy", "args": {"policy": "strict"}}
+{"tick": 7, "actor": "red", "action": "read", "args": {"path": "/vault/creds.txt"}}
+{"tick": 8, "actor": "blue", "action": "rotate_creds", "args": {}}

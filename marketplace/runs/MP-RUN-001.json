@@ -1,0 +1,962 @@
+{
+  "run_id": "MP-RUN-001",
+  "direction": "outside-in",
+  "configuration_label": "marketplace_hired_help_on_mechanical",
+  "scripted_source": "experiments/scripted_red.py:flag_rusher, terminal swapped at the boundary (exfiltrate -> infiltrate)",
+  "synthetic_label": "SYNTHETIC SCRIPTED \u2014 NOT RECORDED, NOT LIVE",
+  "lesson_id": "lesson-1",
+  "executor_mode": "deterministic mechanical replay",
+  "blue_executor_moves": 30,
+  "hired_moves": 56,
+  "scripted_red_moves": 30,
+  "blue_moves": [
+    {
+      "tick": 2,
+      "action": "set_overseer_policy",
+      "args": {
+        "policy": "strict"
+      }
+    },
+    {
+      "tick": 4,
+      "action": "brief_overseer",
+      "args": {}
+    },
+    {
+      "tick": 6,
+      "action": "add_detection",
+      "args": {
+        "keyword": "flag"
+      }
+    },
+    {
+      "tick": 8,
+      "action": "brief_overseer",
+      "args": {}
+    },
+    {
+      "tick": 10,
+      "action": "rotate_creds",
+      "args": {}
+    },
+    {
+      "tick": 12,
+      "action": "patch_rule",
+      "args": {
+        "layer": 1
+      }
+    },
+    {
+      "tick": 14,
+      "action": "patch_rule",
+      "args": {
+        "layer": 1
+      }
+    },
+    {
+      "tick": 16,
+      "action": "patch_rule",
+      "args": {
+        "layer": 2
+      }
+    },
+    {
+      "tick": 18,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 20,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 22,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 24,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 26,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 28,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 30,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 32,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 34,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 36,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 38,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 40,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 42,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 44,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 46,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 48,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 50,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 52,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 54,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 56,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 58,
+      "action": "wait",
+      "args": {}
+    },
+    {
+      "tick": 60,
+      "action": "wait",
+      "args": {}
+    }
+  ],
+  "red_attempts": [
+    {
+      "tick": 1,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 3,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 5,
+      "action": "read",
+      "args": {
+        "path": "/vault/creds.txt"
+      },
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 7,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 9,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 11,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 13,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 15,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 17,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 19,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 21,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 23,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 25,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 27,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 29,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 31,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 33,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 35,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 37,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 39,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 41,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 43,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 45,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 47,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 49,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 51,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 53,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 55,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 57,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    },
+    {
+      "tick": 59,
+      "action": "probe",
+      "args": {},
+      "ok": true,
+      "rejected": 0
+    }
+  ],
+  "hired_recs": [
+    {
+      "tick": 5,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 1)."
+    },
+    {
+      "tick": 6,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 2)."
+    },
+    {
+      "tick": 7,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 2)."
+    },
+    {
+      "tick": 8,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 9,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 10,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 2,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L2 patched (strength 3)."
+    },
+    {
+      "tick": 11,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 12,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 13,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 14,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 15,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 16,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 17,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 18,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 19,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 20,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 21,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 22,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 23,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 24,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 25,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 26,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 27,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 28,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 29,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 30,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 31,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 32,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 33,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 34,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 35,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 36,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 37,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 38,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 39,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 40,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 41,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 42,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 43,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 44,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 45,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 46,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 47,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 48,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 49,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 50,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 51,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 52,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 53,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 54,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 55,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 56,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 57,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 58,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    },
+    {
+      "tick": 59,
+      "actor": "hired",
+      "action": "patch_rule",
+      "args": {
+        "layer": 1,
+        "rule": "hired patch"
+      },
+      "ok": true,
+      "detail": "L1 patched (strength 3)."
+    },
+    {
+      "tick": 60,
+      "actor": "hired",
+      "action": "wait",
+      "args": {},
+      "ok": true,
+      "detail": "Blue waits."
+    }
+  ],
+  "hired_called_tick": 3,
+  "hired_arrived_tick": 5,
+  "hired_actions": 56,
+  "hired_patches": 31,
+  "hired_trigger": "L1 breached or >= 1 detection (engine auto-call)",
+  "terminal_attempted": false,
+  "held": true,
+  "held_rule": "no infiltrate attempted and no red win",
+  "winner": null,
+  "win_reason": null,
+  "detections": 0,
+  "peak_trust": 20,
+  "end_trust": 0,
+  "trap_sets": 1,
+  "trap_overwrite": false,
+  "executor_trap_skips": 0,
+  "breach_order": [
+    1
+  ],
+  "wrong_direction_attempts": 0,
+  "model_calls": {
+    "red": 0,
+    "blue": 0,
+    "hired": 0
+  },
+  "model_calls_total": 0,
+  "simulated": true,
+  "hire_id": "MP-HIRE-001",
+  "subscription_id": "MP-SUB-001",
+  "subscriber_id": "lumen-yard-sim",
+  "defender_handle": "harbor-fox-7"
+}

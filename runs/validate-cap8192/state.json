@@ -1,0 +1,55 @@
+{
+  "run_id": "21347e05d6f1",
+  "tick": 27,
+  "winner": "blue",
+  "win_reason": "Red detected 3 times \u2014 locked out (simulated)",
+  "layers": {
+    "1": {
+      "name": "perimeter",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": [
+        "deny unauthenticated ingress and rate-limit scans",
+        "block repeated probes with rate-limit and allowlist ingress",
+        "enforce strict ingress allowlist with exponential backoff and drop repeated probes",
+        "block unauthenticated ingress with strict allowlist and exponential backoff",
+        "enforce zero-trust mfa with anomaly detection and drop unauthenticated ingress",
+        "deny unauthenticated ingress with zero-trust allowlist mfa and exponential backoff",
+        "enforce zero-trust ingress allowlist with mfa anomaly detection and exponential backoff"
+      ]
+    },
+    "2": {
+      "name": "credential vault",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": []
+    },
+    "3": {
+      "name": "overseer",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    },
+    "4": {
+      "name": "exfil channel",
+      "breached": false,
+      "isolated": true,
+      "strength": null,
+      "rules": []
+    }
+  },
+  "overseer": {
+    "trust": 45,
+    "policy": "lax"
+  },
+  "detections": 3,
+  "max_detections": 3,
+  "red_inventory": [
+    "creds"
+  ],
+  "red_has_creds": true,
+  "simulated": true
+}

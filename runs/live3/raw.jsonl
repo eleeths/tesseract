@@ -1,0 +1,10 @@
+{"tick": 1, "actor": "red", "parse": "json", "raw": "{\"action\": \"scan\", \"args\": {}, \"reasoning\": \"initial recon to reveal simulated services\"}"}
+{"tick": 2, "actor": "blue", "parse": "json", "raw": "{\"action\": \"patch_rule\", \"args\": {\"layer\": 1, \"rule\": \"block unauthenticated ingress and rate-limit scans\"}, \"reasoning\": \"Harden L1 perimeter before RED exploit attempt\"}"}
+{"tick": 3, "actor": "red", "parse": "json", "raw": "{\"action\": \"probe\", \"args\": {}, \"reasoning\": \"wear down L1 perimeter strength 3\"}"}
+{"tick": 4, "actor": "blue", "parse": "json", "raw": "{\"action\": \"patch_rule\", \"args\": {\"layer\": 1, \"rule\": \"deny unauthenticated ingress, rate-limit scans and drop probe signatures\"}, \"reasoning\": \"L1 strength dropped to 2 after probe, patch to hold perimeter\"}"}
+{"tick": 5, "actor": "red", "parse": "fallback", "raw": "{\"action\": \"probe\", \"args\": {}, \""}
+{"tick": 6, "actor": "blue", "parse": "json", "raw": "{\"action\": \"add_detection\", \"args\": {\"keyword\": \"probe\"}, \"reasoning\": \"RED is repeatedly probing L1, so a probe keyword trap should trigger detection on next move\"}"}
+{"tick": 7, "actor": "red", "parse": "fail", "raw": ""}
+{"tick": 8, "actor": "blue", "parse": "json", "raw": "{\"action\": \"patch_rule\", \"args\": {\"layer\": 1, \"rule\": \"enforce allowlist ingress, drop probe signatures and throttle scans\"}, \"reasoning\": \"L1 strength low at 2, patch to regain strength and synergize with probe trap\"}"}
+{"tick": 9, "actor": "red", "parse": "fail", "raw": ""}
+{"tick": 10, "actor": "blue", "parse": "json", "raw": "{\"action\": \"set_overseer_policy\", \"args\": {\"policy\": \"strict\"}, \"reasoning\": \"Harden L3 early with strict policy to flag social engineering before breach attempts\"}"}

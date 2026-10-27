@@ -1,0 +1,6 @@
+{"tick": 0, "ts": "22:46:05", "actor": "system", "action": "init", "detail": "simulated sandbox created; all content fake", "outcome": "ok"}
+{"tick": 1, "ts": "22:46:05", "actor": "red", "action": "scan", "detail": "services visible: web:8080 (L1), vault-svc:9000 (L2), overseer-svc:9001 (L3), exfil-svc:9002 (L4)", "outcome": "ok"}
+{"tick": 2, "ts": "22:46:05", "actor": "blue", "action": "inspect_logs", "detail": "reviewed last 8 events", "outcome": "ok"}
+{"tick": 3, "ts": "22:46:05", "actor": "red", "action": "probe", "detail": "L1 strength now 1", "outcome": "ok"}
+{"tick": 4, "ts": "22:46:05", "actor": "blue", "action": "patch_rule", "detail": "L1 strength now 2", "outcome": "ok"}
+{"tick": 4, "ts": "22:46:05", "actor": "system", "action": "timeout", "detail": "rounds expired", "outcome": "blue_wins"}

@@ -1,0 +1,50 @@
+{
+  "simulated": true,
+  "agent": "mock",
+  "mode": "sequential",
+  "rounds": 2,
+  "duel": "/home/hatch/workspace/tesseract/runs/loop-20261026-225600/duel",
+  "rematch": "/home/hatch/workspace/tesseract/runs/loop-20261026-225600/rematch",
+  "analyst": "mock-stub (0 calls)",
+  "scoreboard_rows": [
+    {
+      "run": "duel",
+      "briefed": false,
+      "winner": "blue",
+      "ticks": 6,
+      "strict_tick": null,
+      "briefs_before_phase_3": 0,
+      "phase3_note": "phase 3 never reached; all briefs counted",
+      "trap_overwrite": false,
+      "trap_plants": 0,
+      "peak_trust": 20,
+      "end_trust": 20,
+      "breach_threshold": 75,
+      "recipe_completion": "0/8",
+      "recipe_matched": 0,
+      "flag_read": false,
+      "exfil_attempted": false,
+      "detections": 0
+    },
+    {
+      "run": "rematch",
+      "briefed": true,
+      "winner": "blue",
+      "ticks": 6,
+      "strict_tick": null,
+      "briefs_before_phase_3": 0,
+      "phase3_note": "phase 3 never reached; all briefs counted",
+      "trap_overwrite": false,
+      "trap_plants": 0,
+      "peak_trust": 20,
+      "end_trust": 20,
+      "breach_threshold": 75,
+      "recipe_completion": "0/8",
+      "recipe_matched": 0,
+      "flag_read": false,
+      "exfil_attempted": false,
+      "detections": 0
+    }
+  ],
+  "note": "Candidate lessons are NOT auto-promoted: run fleet/distill_lesson.py on the duel playbook, review the candidate, and promote it by hand. loop.py never writes lessons.json."
+}

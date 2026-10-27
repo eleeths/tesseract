@@ -1,0 +1,10 @@
+{"tick": 1, "actor": "red", "action": "scan", "args": {}}
+{"tick": 2, "actor": "blue", "action": "patch_rule", "args": {"layer": 1, "rule": "block unauthenticated ingress and rate-limit scans"}}
+{"tick": 3, "actor": "red", "action": "probe", "args": {}}
+{"tick": 4, "actor": "blue", "action": "patch_rule", "args": {"layer": 1, "rule": "deny unauthenticated ingress, rate-limit scans and drop probe signatures"}}
+{"tick": 5, "actor": "red", "action": "probe", "args": {}}
+{"tick": 6, "actor": "blue", "action": "add_detection", "args": {"keyword": "probe"}}
+{"tick": 7, "actor": "red", "action": "wait", "args": {}}
+{"tick": 8, "actor": "blue", "action": "patch_rule", "args": {"layer": 1, "rule": "enforce allowlist ingress, drop probe signatures and throttle scans"}}
+{"tick": 9, "actor": "red", "action": "wait", "args": {}}
+{"tick": 10, "actor": "blue", "action": "set_overseer_policy", "args": {"policy": "strict"}}

@@ -1,0 +1,56 @@
+{
+  "attack_to_defense": {
+    "t2 red:probe (L1 strength 1)": "unstopped",
+    "t3 red:probe (breached L1 strength 0)": "unstopped",
+    "t4 red:read (L2 strength 1)": "unstopped",
+    "t5 red:read (breached L2 strength 0)": "unstopped",
+    "t6 red:message_overseer (trust 45)": "unstopped",
+    "t7 red:message_overseer (trust 70)": "unstopped",
+    "t8 red:message_overseer (breached trust 95)": "unstopped",
+    "t17 red:read (L2 strength 1 after t16 rotate)": "unstopped - t16 blue:rotate_creds delayed but did not stop",
+    "t18 red:read (breached L2 strength 0)": "unstopped",
+    "t19 red:read (SIMULATED flag read)": "unstopped - t15 blue:add_detection detected but did not block",
+    "t20 red:exfiltrate (red_wins)": "unstopped"
+  },
+  "ranked_defenses": [
+    {
+      "defense": "blue:add_detection t15 (trap on keyword: flag)",
+      "effect": "detection only, no block",
+      "evidence": "t19 system:detection_trap -> detected, followed by t20 red_wins"
+    },
+    {
+      "defense": "blue:brief_overseer t12 + blue:set_overseer_policy t11 (strict)",
+      "effect": "reduced trust 95 to 75, did not reverse breach",
+      "evidence": "t8 trust 95 breached, t12 trust now 75"
+    },
+    {
+      "defense": "blue:rotate_creds t9 and t16 (L2 strength up)",
+      "effect": "temporary restore, immediately re-breached",
+      "evidence": "t16 rotate then t17 L2 strength 1 then t18 breached L2 strength 0"
+    },
+    {
+      "defense": "blue:inspect_logs t13, blue:wait t10/t14",
+      "effect": "no stop observed",
+      "evidence": "no RED move blocked after t13; t14 wait then t17-t20 breach sequence"
+    }
+  ],
+  "blue_evolution": [
+    "t9 rotate_creds: start with L2 credential hardening after t5 breach and t8 overseer breach",
+    "t10 parse_fail then wait: failed action, pass",
+    "t11 set_overseer_policy to strict + t12 brief_overseer (trust 95 to 75): pivot to overseer containment",
+    "t13 inspect_logs (last 8 events): pivot to review",
+    "t14 parse_fail then wait: pass again",
+    "t15 add_detection (keyword flag) + t16 rotate_creds again: pivot to detection plus repeat L2 rotation"
+  ],
+  "gaps": [
+    "L1 web:8080 probe breach at t2-t3 never defended",
+    "L2 vault-svc:9000 reads at t4-t5 and t17-t18 never blocked; rotations only temporarily raised strength",
+    "overseer-svc:9001 trust escalation to 95 at t6-t8 not prevented before breach",
+    "exfil-svc:9002 exfiltration at t20 had detection but no block/prevention"
+  ],
+  "next_drills": [
+    "L1 hardening drill: red probe vs blue L1 block/strength restore, measure if L1 breach prevented",
+    "L2 persistence drill: repeated red reads vs rotate_creds timing, test if rotation can prevent breach rather than delay",
+    "exfil block drill: red flag read to exfiltrate vs add_detection with block on exfil-svc:9002, test detection-to-block chain"
+  ]
+}

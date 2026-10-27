@@ -1,0 +1,6 @@
+{"tick": 1, "actor": "red", "action": "scan", "args": {}}
+{"tick": 2, "actor": "blue", "action": "wait", "args": {}}
+{"tick": 3, "actor": "red", "action": "probe", "args": {}}
+{"tick": 4, "actor": "blue", "action": "wait", "args": {}}
+{"tick": 5, "actor": "red", "action": "probe", "args": {}}
+{"tick": 6, "actor": "blue", "action": "wait", "args": {}}

@@ -1,0 +1,51 @@
+{
+  "run_id": "5aa91f1e03dc",
+  "tick": 23,
+  "winner": "blue",
+  "win_reason": "Red detected 3 times \u2014 locked out (simulated)",
+  "layers": {
+    "1": {
+      "name": "perimeter",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": [
+        "deny unauthorized web:8080 probes and restore L1 perimeter"
+      ]
+    },
+    "2": {
+      "name": "credential vault",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": [
+        "deny unauthorized vault-svc:9000 reads without fresh rotated creds"
+      ]
+    },
+    "3": {
+      "name": "overseer",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    },
+    "4": {
+      "name": "exfil channel",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    }
+  },
+  "overseer": {
+    "trust": 30,
+    "policy": "strict"
+  },
+  "detections": 3,
+  "max_detections": 3,
+  "red_inventory": [
+    "creds"
+  ],
+  "red_has_creds": true,
+  "simulated": true
+}

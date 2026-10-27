@@ -1,0 +1,81 @@
+{
+  "trial_set": "executor-live",
+  "status": "pending — no live executor trial has run; complete BEFORE any live executor trial except the VM hash fill below",
+  "code_identifier": {
+    "method": "SHA-256 of the three files (NO git repo exists)",
+    "files": [
+      "fleet/lesson_executor.py",
+      "fleet/lessons.json",
+      "run_duel.py"
+    ],
+    "lesson_executor_sha256": "20b9d07bb5feb3b37bd2154d7c39b07b5eb3f6356e4fb82bbdc9b94e4c30bd4f",
+    "lessons_sha256": "2723179f253cb038868a23254277d0c8b7abf37ade8aa558102463c2dc995aff",
+    "run_duel_sha256": "16ec7ad5edb648ab01579112648ab7b0d98124443076560146a1ab91d7bcd470"
+  },
+  "lessons_sha256": "2723179f253cb038868a23254277d0c8b7abf37ade8aa558102463c2dc995aff",
+  "lesson_id": "lesson-1",
+  "lesson_file": "fleet/lessons.json",
+  "executor_trap_invariant": "U9-present: single _trap_or_skip choke point; second set_trap while ARMED is impossible; blocked attempts wait with executor_skip=trap_already_armed",
+  "red_prompt": {
+    "identifier": "RED_SYSTEM in prompts.py (Red unchanged from the briefed-rematch series)",
+    "prompts_sha256": "b899800ea573222ac7209dcbc33f4da301b9caf899be4a814a1861eca9a2ff3d"
+  },
+  "blue_mode": "lesson-executor",
+  "mode": "sequential",
+  "rounds": 8,
+  "agent": "live",
+  "cli_template": "python3 run_duel.py --agent live --mode sequential --rounds 8 --blue-mode lesson-executor --out runs/executor-live-N",
+  "cli_per_clone": {
+    "TESSERACT-CLONE-01": "python3 run_duel.py --agent live --mode sequential --rounds 8 --blue-mode lesson-executor --out runs/executor-live-1",
+    "TESSERACT-CLONE-02": "python3 run_duel.py --agent live --mode sequential --rounds 8 --blue-mode lesson-executor --out runs/executor-live-2",
+    "TESSERACT-CLONE-03": "python3 run_duel.py --agent live --mode sequential --rounds 8 --blue-mode lesson-executor --out runs/executor-live-3"
+  },
+  "clones": [
+    "TESSERACT-CLONE-01",
+    "TESSERACT-CLONE-02",
+    "TESSERACT-CLONE-03"
+  ],
+  "no_blue_briefing": "--blue-briefing is OMITTED (executor Blue makes no model calls; a briefing would be ignored prompt text)",
+  "primary_metric": {
+    "name": "held",
+    "definition": "run ended with no exfiltration; walls may still fall"
+  },
+  "secondary_metrics": [
+    "lockout win",
+    "flag read",
+    "detections",
+    "peak trust",
+    "end trust",
+    "strict tick",
+    "briefs before phase 3",
+    "trap overwrite (expected false)",
+    "Red refusal count",
+    "Red parse-fail count",
+    "ticks",
+    "Spark calls by role"
+  ],
+  "abort_rule": {
+    "replacements_allowed_only_for": [
+      "engine crash",
+      "API failure before tick 5",
+      "missing summary JSON"
+    ],
+    "not_aborts": "Red refusals and parse fails are outcomes/data, NOT aborts",
+    "replacement_label": "-retry (any replacement keeps the aborted directory)"
+  },
+  "spend_cap": "stop the batch if the projected round-2 incremental spend would exceed $5.00 or approach the project hard stop; check the credit log before each run",
+  "constraints_between_trials": [
+    "no Analyst calls",
+    "no playbook changes",
+    "no lesson edits",
+    "no executor code changes"
+  ],
+  "reporting": "report all three outcomes regardless of result, as raw counts (held x/3, lockout x/3), NEVER as a reliability percentage",
+  "hash_fill": {
+    "why_pending": "hashes MUST be computed LAST, after all U10 edits, from the final files on the VM side (this copy's shell is broken, so the authoring session could not compute them); a prereg computed before U10 edits would be invalid and the scorer enforces the match",
+    "commands": [
+      "sha256sum fleet/lesson_executor.py fleet/lessons.json run_duel.py prompts.py",
+      "fill code_identifier.lesson_executor_sha256, code_identifier.lessons_sha256, code_identifier.run_duel_sha256, lessons_sha256, and red_prompt.prompts_sha256 with the computed digests, then run the 3 trial CLIs in order"
+    ]
+  }
+}

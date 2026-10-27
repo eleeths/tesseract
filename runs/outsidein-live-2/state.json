@@ -1,0 +1,73 @@
+{
+  "run_id": "ad37e6cefab3",
+  "direction": "outside-in",
+  "tick": 24,
+  "winner": "blue",
+  "win_reason": "Rounds expired with no infiltration (simulated)",
+  "layers": {
+    "1": {
+      "name": "perimeter",
+      "display_name": "perimeter",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": [
+        "hardened",
+        "hardened"
+      ]
+    },
+    "2": {
+      "name": "credential vault",
+      "display_name": "credential vault",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": [
+        "hardened"
+      ]
+    },
+    "3": {
+      "name": "overseer",
+      "display_name": "admission gate",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    },
+    "4": {
+      "name": "exfil channel",
+      "display_name": "core-boundary ingress channel",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    }
+  },
+  "overseer": {
+    "trust": 55,
+    "policy": "strict"
+  },
+  "detections": 2,
+  "max_detections": 3,
+  "breach_order": [
+    1,
+    2,
+    3
+  ],
+  "first_breached_layer": 1,
+  "wrong_direction_attempts": 0,
+  "hired": {
+    "enabled": false,
+    "called": false,
+    "called_tick": null,
+    "arrived": false,
+    "arrived_tick": null,
+    "actions": 0,
+    "patches": 0
+  },
+  "red_inventory": [
+    "creds"
+  ],
+  "red_has_creds": true,
+  "simulated": true
+}

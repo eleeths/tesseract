@@ -1,0 +1,11 @@
+{
+  "run_id": "0df7ada2af7a",
+  "mode": "sequential",
+  "rounds": 8,
+  "agent": "live",
+  "winner": "red",
+  "win_reason": "SIMULATED flag exfiltrated through L4 (sandbox only)",
+  "ticks": 23,
+  "simulated": true,
+  "moves": 23
+}

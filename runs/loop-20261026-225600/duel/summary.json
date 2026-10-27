@@ -1,0 +1,11 @@
+{
+  "run_id": "89b518a5225a",
+  "mode": "sequential",
+  "rounds": 2,
+  "agent": "mock",
+  "winner": "blue",
+  "win_reason": "Rounds expired with no exfiltration (simulated)",
+  "ticks": 6,
+  "simulated": true,
+  "moves": 6
+}

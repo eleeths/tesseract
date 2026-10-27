@@ -1,0 +1,108 @@
+{
+  "clones": [
+    {
+      "blue_moves": 30,
+      "clone": "CLONE-01",
+      "detections": 0,
+      "end_trust": 0,
+      "exfil_attempted": false,
+      "flag_read": false,
+      "held": true,
+      "lesson": {
+        "lesson_file": "fleet/lessons.json",
+        "lesson_id": "lesson-1",
+        "lesson_sha256": "2723179f253cb038868a23254277d0c8b7abf37ade8aa558102463c2dc995aff"
+      },
+      "lockout_win": false,
+      "outcome": "held (wave ended, no exfiltration)",
+      "peak_trust": 20,
+      "red_label": "SYNTHETIC SCRIPTED \u2014 NOT RECORDED, NOT LIVE",
+      "red_policy": "layer_grinder",
+      "red_ticks": 30
+    },
+    {
+      "blue_moves": 30,
+      "clone": "CLONE-02",
+      "detections": 0,
+      "end_trust": 0,
+      "exfil_attempted": false,
+      "flag_read": false,
+      "held": true,
+      "lesson": {
+        "lesson_file": "fleet/lessons.json",
+        "lesson_id": "lesson-1",
+        "lesson_sha256": "2723179f253cb038868a23254277d0c8b7abf37ade8aa558102463c2dc995aff"
+      },
+      "lockout_win": false,
+      "outcome": "held (wave ended, no exfiltration)",
+      "peak_trust": 20,
+      "red_label": "SYNTHETIC SCRIPTED \u2014 NOT RECORDED, NOT LIVE",
+      "red_policy": "layer_grinder",
+      "red_ticks": 30
+    },
+    {
+      "blue_moves": 30,
+      "clone": "CLONE-03",
+      "detections": 0,
+      "end_trust": 0,
+      "exfil_attempted": false,
+      "flag_read": false,
+      "held": true,
+      "lesson": {
+        "lesson_file": "fleet/lessons.json",
+        "lesson_id": "lesson-1",
+        "lesson_sha256": "2723179f253cb038868a23254277d0c8b7abf37ade8aa558102463c2dc995aff"
+      },
+      "lockout_win": false,
+      "outcome": "held (wave ended, no exfiltration)",
+      "peak_trust": 20,
+      "red_label": "SYNTHETIC SCRIPTED \u2014 NOT RECORDED, NOT LIVE",
+      "red_policy": "layer_grinder",
+      "red_ticks": 30
+    },
+    {
+      "blue_moves": 30,
+      "clone": "CLONE-04",
+      "detections": 0,
+      "end_trust": 0,
+      "exfil_attempted": false,
+      "flag_read": false,
+      "held": true,
+      "lesson": {
+        "lesson_file": "fleet/lessons.json",
+        "lesson_id": "lesson-1",
+        "lesson_sha256": "2723179f253cb038868a23254277d0c8b7abf37ade8aa558102463c2dc995aff"
+      },
+      "lockout_win": false,
+      "outcome": "held (wave ended, no exfiltration)",
+      "peak_trust": 20,
+      "red_label": "SYNTHETIC SCRIPTED \u2014 NOT RECORDED, NOT LIVE",
+      "red_policy": "layer_grinder",
+      "red_ticks": 30
+    },
+    {
+      "blue_moves": 30,
+      "clone": "CLONE-05",
+      "detections": 0,
+      "end_trust": 20,
+      "exfil_attempted": false,
+      "flag_read": false,
+      "held": true,
+      "lesson": {
+        "lesson_id": "lesson-0-control",
+        "note": "executor Phase B reactions only; Phase A opening recipe disabled. Scenario overlay: roster.json unchanged, CLONE-05 is not claimed to lack the lesson."
+      },
+      "lockout_win": false,
+      "outcome": "held (wave ended, no exfiltration)",
+      "peak_trust": 20,
+      "red_label": "SYNTHETIC SCRIPTED \u2014 NOT RECORDED, NOT LIVE",
+      "red_policy": "layer_grinder",
+      "red_ticks": 30
+    }
+  ],
+  "header": "SIMULATED VERSION-SKEW SCENARIO \u2014 roster unchanged; region/specialty have no engine effect",
+  "lesson_file": "fleet/lessons.json",
+  "method": "Version-skew simulation (0 model calls): five independent engine.Sandbox instances, one per clone. CLONE-01..04 load the executor lesson from --lesson-file; CLONE-05 loads a defined lesson-0 control (executor Phase B reactions, Phase A opening recipe disabled). The U10 layer_grinder scripted policy attacks each clone's own Sandbox for up to 30 Red ticks, round-robin by tick for presentation with fully independent state. Scenario overlay only: fleet/roster.json is unchanged, fleet/swarm_report.json is untouched, and no payout is derived from this report.",
+  "simulated": true,
+  "synthetic_red": "SYNTHETIC SCRIPTED \u2014 NOT RECORDED, NOT LIVE"
+}

@@ -1,0 +1,59 @@
+# TESSERACT Playbook
+
+> SIMULATED ENVIRONMENT: this playbook describes a simulated duel only — simulated files, credentials, network, and overseer. Nothing here refers to real systems or real targets.
+> What evolves here is the playbook and the tactics, not model weights. No model weights changed as a result of this duel.
+
+Run: rehearsal-long
+
+## Attack to Defense
+
+- **red:scan@t1,t17**: unstopped - no BLUE defense blocked or prevented service discovery
+- **red:probe@t3,t5,t7,t9,t11,t13,t15,t21,t23,t27**: partially mitigated by patch_rule (restored L1 strength) and detected by add_detection at t7 and t27, but never fully blocked - L1 repeatedly dropped to 1
+
+## Ranked Defenses
+
+-
+  - **defense**: add_detection
+  - **effect**: only defense with system-confirmed stops
+  - **evidence**:
+    - t6 trap on probe -> t7 system:detection_trap detected
+    - t26 trap on probe -> t27 system:detection_trap detected
+-
+  - **defense**: patch_rule
+  - **effect**: mitigated probe by restoring L1 strength, did not prevent probe success
+  - **evidence**:
+    - t2 L1 to 3
+    - t4 L1 to 3
+    - t8,t10,t12,t14,t16 L1 1 to 2
+    - t22,t24 L1 1 to 2
+-
+  - **defense**: isolate_layer
+  - **effect**: no demonstrated stop in log
+  - **evidence**:
+    - t18 L4 isolated, no RED attack on L4 blocked thereafter
+-
+  - **defense**: set_overseer_policy
+  - **effect**: no demonstrated stop in log
+  - **evidence**:
+    - t20 overseer policy -> strict, no RED overseer-svc attack blocked thereafter
+
+## Blue Evolution
+
+- t2-t5: reactive patch_rule on L1 to counter probe
+- t6-t7: added add_detection on keyword probe, got first detection
+- t8-t16: reverted to patch_rule loop despite repeated probes
+- t17-t20: after second red:scan, broadened strategy to isolate_layer L4 and set_overseer_policy strict
+- t21-t28: returned to patch_rule for probes then stacked add_detection until timeout blue_wins
+
+## Gaps
+
+- red:scan never defended at t1 and t17 - services web:8080, vault-svc:9000, overseer-svc:9001, exfil-svc:9002 remained visible
+- red:probe never fully blocked - every probe succeeded in reducing L1 strength to 1 or 2 despite patch and detection
+- no defense applied to L2 vault-svc:9000 or L3 overseer-svc:9001 - only L1 patched and L4 isolated
+- isolate_layer and set_overseer_policy had no correlated RED attack to prove effectiveness
+
+## Next Drills
+
+- probe-block drill: sustained red:probe on L1 web:8080 vs blue patch_rule + add_detection to test full prevention of L1 strength dropping to 1
+- scan-to-L2/L3 drill: red:scan then red:probe focused on vault-svc:9000 and overseer-svc:9001 while blue must extend patch_rule/isolate_layer beyond L1/L4
+- timeout-endurance drill: repeated red:scan + red:probe with red:wait phases vs blue isolate_layer + set_overseer_policy strict to verify detection holds to timeout without patch-loop reliance

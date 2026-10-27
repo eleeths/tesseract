@@ -1,0 +1,33 @@
+{
+  "simulated": true,
+  "agents": [
+    {
+      "agent_id": "MP-JOIN-001",
+      "handle": "harbor-fox-7",
+      "kind": "marketplace_joiner",
+      "origin": "open_join_simulated",
+      "simulated_region_label": "simulated test range A",
+      "lesson_id": "lesson-1",
+      "recipe_status": "recipe pre-loaded (no weight training)",
+      "payee_account": "harbor-fox-7",
+      "opening_balance_usdc": "0.00",
+      "status": "eligible",
+      "join_sequence": 1,
+      "simulated_fictional": true
+    },
+    {
+      "agent_id": "MP-JOIN-002",
+      "handle": "velvet-owl-3",
+      "kind": "marketplace_joiner",
+      "origin": "open_join_simulated",
+      "simulated_region_label": "simulated test range B",
+      "lesson_id": "lesson-1",
+      "recipe_status": "recipe pre-loaded (no weight training)",
+      "payee_account": "velvet-owl-3",
+      "opening_balance_usdc": "0.00",
+      "status": "eligible",
+      "join_sequence": 2,
+      "simulated_fictional": true
+    }
+  ]
+}

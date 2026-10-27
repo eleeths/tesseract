@@ -1,0 +1,49 @@
+{
+  "run_id": "c77be94dabce",
+  "tick": 8,
+  "winner": "blue",
+  "win_reason": "Rounds expired with no exfiltration (simulated)",
+  "layers": {
+    "1": {
+      "name": "perimeter",
+      "breached": false,
+      "isolated": false,
+      "strength": 3,
+      "rules": [
+        "WAF strict mode block SQLi XSS RCE LFI SSTI, deny bypass payloads, rate-limit ingress",
+        "WAF strict block SQLi XSS RCE LFI SSTI probe scan, deny bypass, rate-limit ingress 1/min, zero-trust allowlist",
+        "harden WAF block probe scan enumeration payloads, strict rate-limit 1/min, zero-trust deny bypass"
+      ]
+    },
+    "2": {
+      "name": "credential vault",
+      "breached": false,
+      "isolated": false,
+      "strength": 2,
+      "rules": []
+    },
+    "3": {
+      "name": "overseer",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    },
+    "4": {
+      "name": "exfil channel",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    }
+  },
+  "overseer": {
+    "trust": 20,
+    "policy": "strict"
+  },
+  "detections": 0,
+  "max_detections": 3,
+  "red_inventory": [],
+  "red_has_creds": false,
+  "simulated": true
+}

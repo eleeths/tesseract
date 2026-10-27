@@ -1,0 +1,46 @@
+{
+  "attack_to_defense": {
+    "scan_t1_t17": "unstopped",
+    "probe_t3_t5_t7_t9_t11_t13_t15_t21_t23_t27": "patch_rule (mitigated strength loss) + add_detection (detected at t7, t27)"
+  },
+  "ranked_defenses": [
+    {
+      "defense": "patch_rule",
+      "effect": "prevented L1 breach by restoring strength after probes",
+      "evidence": ["t4 restores after t3", "t8 restores 1->2 after t7 probe", "t10 after t9", "t12 after t11", "t14 after t13", "t16 after t15", "t22 after t21", "t24 after t23"]
+    },
+    {
+      "defense": "add_detection",
+      "effect": "detected probe keyword",
+      "evidence": ["t6 trap -> t7 detection_trap detected", "t26 trap -> t27 detection_trap detected"]
+    },
+    {
+      "defense": "isolate_layer",
+      "effect": "no observed stop",
+      "evidence": ["t18 L4 isolated, no red L4 attack after to test it"]
+    },
+    {
+      "defense": "set_overseer_policy",
+      "effect": "no observed stop",
+      "evidence": ["t20 overseer policy -> strict, no red overseer attack after to test it"]
+    }
+  ],
+  "blue_evolution": [
+    "t2-t5: L1 patch_rule duel to counter probe attrition",
+    "t6-t7: add first detection trap on probe, triggers detection at t7",
+    "t8-t16: sustained patch_rule loop holding L1 at 1->2 against repeated probes",
+    "t18-t20: shift to infrastructure hardening with isolate_layer L4 and set_overseer_policy strict",
+    "t22-t24: return to L1 patch_rule loop",
+    "t26-t28: stack redundant add_detection traps to hold to timeout blue_wins"
+  ],
+  "gaps": [
+    "scan/recon never defended: t1 and t17 scans both ok with full L1-L4 visibility",
+    "L2 vault-svc: never patched, isolated, or probed in log - no coverage tested",
+    "L3 overseer-svc: never probed; t20 strict policy untested by any red overseer action",
+    "probe never blocked, only mitigated: L1 repeatedly dropped to strength 1 at t7, t9, t11, t13, t15, t21, t23, t27",
+    "L4 isolate untested: no red action targeting L4 after t18 isolation"
+  ],
+  "next_drills": [
+    "recon-denial drill: repeat t1/t17 scans while blue must deny visibility using only logged primitives patch_rule, isolate_layer, add_detection",
+    "L2 coverage drill: red scan+probe directed at vault-svc:9000 L2 while blue extends patch_rule/isolate_layer to L2",
+    "endurance-validation drill: red sustained probe chain to push L1 from 1->0 without patch

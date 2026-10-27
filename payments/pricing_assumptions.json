@@ -1,0 +1,54 @@
+{
+  "recorded_demo_ledger": {
+    "note": "REFERENCED from payments/ledger.json + payments/moneyflow.json, not recomputed from assumptions. Simulated SIM-USDC demo money only.",
+    "subscriptions_in_usdc": 75.0,
+    "payouts_out_usdc": 12.5,
+    "treasury_usdc": 62.5,
+    "payout_rule": "flat $2.50 per wave held in pretrained (recipe pre-loaded, no weight training) mode; five SENTRY payouts"
+  },
+  "measured_inputs": {
+    "note": "NULL until filled by the coordinator from the U12 tooling summary. pricing.py REFUSES dollar break-even figures while any of these is null. Do NOT estimate them.",
+    "blue_calls_per_duel_prompt": null,
+    "cost_per_call_usdc": null,
+    "analyst_calls_per_analyzed_run": null
+  },
+  "scenario_assumptions": {
+    "defenses_per_month": {
+      "value": [10, 50, 200],
+      "label": "ASSUMPTION — NOT A CUSTOMER, ORDER, OR REVENUE CLAIM"
+    },
+    "proposed_tier_10_clone_slots": {
+      "value": 1,
+      "label": "ASSUMPTION — NOT A CUSTOMER, ORDER, OR REVENUE CLAIM"
+    },
+    "proposed_tier_15_clone_slots": {
+      "value": 3,
+      "label": "ASSUMPTION — NOT A CUSTOMER, ORDER, OR REVENUE CLAIM"
+    },
+    "analyst_refreshes_per_month": {
+      "value": 1,
+      "label": "ASSUMPTION — NOT A CUSTOMER, ORDER, OR REVENUE CLAIM"
+    },
+    "defenses_credited_per_playbook": {
+      "value": 50,
+      "label": "ASSUMPTION — NOT A CUSTOMER, ORDER, OR REVENUE CLAIM"
+    },
+    "executor_non_model_compute_per_duel_usdc": {
+      "value": 0.01,
+      "label": "ASSUMPTION — NOT A CUSTOMER, ORDER, OR REVENUE CLAIM"
+    },
+    "payout_bonus_lockout_usdc": {
+      "value": 1.0,
+      "label": "ASSUMPTION — NOT A CUSTOMER, ORDER, OR REVENUE CLAIM"
+    },
+    "payout_bonus_flag_never_read_usdc": {
+      "value": 0.5,
+      "label": "ASSUMPTION — NOT A CUSTOMER, ORDER, OR REVENUE CLAIM"
+    }
+  },
+  "proposed_packaging": {
+    "note": "PROPOSED scenario packaging, distinct from the simulated Acme/Globex ledger entries. Existing simulated subscribers did NOT buy these entitlements.",
+    "tier_10": "PROPOSED: $10/month = 1 clone slot with current lesson loading",
+    "tier_15": "PROPOSED: $15/month = up to 3 clone slots plus candidate-lesson review reports"
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "schema": "marketplace-ledger/1",
+  "simulated": true,
+  "logical_clock": 104,
+  "counters": {
+    "transaction": 2,
+    "settlement": 2,
+    "receipt": 2,
+    "demo_payment": 2,
+    "flow": 2,
+    "nonce": 2
+  },
+  "accounts": [
+    {
+      "account": "harbor-fox-7",
+      "opening_atomic": 0,
+      "balance_atomic": 2500000
+    },
+    {
+      "account": "velvet-owl-3",
+      "opening_atomic": 0,
+      "balance_atomic": 0
+    },
+    {
+      "account": "marketplace-treasury",
+      "opening_atomic": 0,
+      "balance_atomic": 7500000
+    },
+    {
+      "account": "lumen-yard-sim",
+      "opening_atomic": 100000000,
+      "balance_atomic": 90000000
+    }
+  ],
+  "faucet_allocations": [
+    {
+      "account": "lumen-yard-sim",
+      "amount_atomic": 100000000,
+      "note": "opening simulated balance, not revenue, not a payment",
+      "logical_time": 100
+    }
+  ],
+  "settlement_journal": [
+    {
+      "settlement_id": "SIM-STL-MP-000001",
+      "transaction": "SIM-TX-MP-000001",
+      "payer": "lumen-yard-sim",
+      "payee": "marketplace-treasury",
+      "amount_atomic": 10000000,
+      "asset": "SIM-USDC",
+      "scheme": "exact",
+      "network": "simulated",
+      "logical_time": 101,
+      "success": true
+    },
+    {
+      "settlement_id": "SIM-STL-MP-000002",
+      "transaction": "SIM-TX-MP-000002",
+      "payer": "marketplace-treasury",
+      "payee": "harbor-fox-7",
+      "amount_atomic": 2500000,
+      "asset": "SIM-USDC",
+      "scheme": "exact",
+      "network": "simulated",
+      "logical_time": 104,
+      "success": true
+    }
+  ],
+  "failed_attempts": [],
+  "flows": [
+    {
+      "flow_id": "MP-FLOW-000001",
+      "kind": "subscription",
+      "payer": "lumen-yard-sim",
+      "payee": "marketplace-treasury",
+      "amount_atomic": 10000000,
+      "receipt_id": "SIM-RCPT-MP-000001",
+      "settlement_id": "SIM-STL-MP-000001",
+      "related": {
+        "subscription_id": "MP-SUB-001"
+      },
+      "logical_time": 101
+    },
+    {
+      "flow_id": "MP-FLOW-000002",
+      "kind": "payout",
+      "payer": "marketplace-treasury",
+      "payee": "harbor-fox-7",
+      "amount_atomic": 2500000,
+      "receipt_id": "SIM-RCPT-MP-000002",
+      "settlement_id": "SIM-STL-MP-000002",
+      "related": {
+        "hire_id": "MP-HIRE-001",
+        "duel_run_id": "MP-RUN-001",
+        "subscription_id": "MP-SUB-001"
+      },
+      "logical_time": 104
+    }
+  ],
+  "subscriptions": [
+    {
+      "subscription_id": "MP-SUB-001",
+      "subscriber_id": "lumen-yard-sim",
+      "tier": "swarm-defense-standard",
+      "amount_atomic": 10000000,
+      "amount_usdc": "10.00",
+      "receipt_id": "SIM-RCPT-MP-000001",
+      "settlement_id": "SIM-STL-MP-000001",
+      "payer": "lumen-yard-sim",
+      "payee": "marketplace-treasury",
+      "start_logical": 101,
+      "expiry_logical": 601,
+      "status": "consumed",
+      "entitlement": {
+        "marketplace_hired_help_dispatches_allowed": 1,
+        "direction": "outside-in",
+        "engine_configuration": "hired help on",
+        "lesson": "lesson-1"
+      }
+    }
+  ],
+  "hires": [
+    {
+      "hire_id": "MP-HIRE-001",
+      "subscription_id": "MP-SUB-001",
+      "subscriber_id": "lumen-yard-sim",
+      "defender_agent_id": "MP-JOIN-001",
+      "defender_handle": "harbor-fox-7",
+      "direction": "outside-in",
+      "engine_configuration": "hired help on",
+      "lesson_id": "lesson-1",
+      "executor_mode": "deterministic mechanical replay",
+      "model_calls": 0,
+      "duel_run_id": "MP-RUN-001",
+      "status": "paid",
+      "payout_receipt_id": "SIM-RCPT-MP-000002"
+    }
+  ],
+  "payout_claims": [
+    {
+      "duel_run_id": "MP-RUN-001",
+      "defender_agent_id": "MP-JOIN-001",
+      "defender_handle": "harbor-fox-7",
+      "amount_atomic": 2500000,
+      "amount_usdc": "2.50",
+      "receipt": {
+        "receipt_id": "SIM-RCPT-MP-000002",
+        "transaction": "SIM-TX-MP-000002",
+        "settlement_id": "SIM-STL-MP-000002",
+        "demo_payment_id": "DP-000002",
+        "scheme": "exact",
+        "network": "simulated",
+        "asset": "SIM-USDC",
+        "payer": "marketplace-treasury",
+        "payee": "harbor-fox-7",
+        "amount_atomic": 2500000,
+        "amount_usdc": "2.50",
+        "resource": "marketplace/payouts/claim/MP-RUN-001",
+        "related": {},
+        "logical_sequence": 104,
+        "simulated": true
+      },
+      "flow_id": "MP-FLOW-000002",
+      "status": "paid"
+    }
+  ],
+  "used_nonces": [
+    "sim-nonce-000001",
+    "sim-nonce-000002"
+  ]
+}

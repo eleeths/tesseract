@@ -1,0 +1,63 @@
+{
+  "attack_to_defense": {
+    "t1_red:scan": "unstopped",
+    "t2_red:probe": "unstopped",
+    "t3_red:probe_breached": "unstopped",
+    "t4_red:read": "unstopped",
+    "t5_red:read_breached": "unstopped",
+    "t6_red:message_overseer_trust45": "unstopped",
+    "t7_red:message_overseer_trust70": "unstopped",
+    "t8_red:message_overseer_breached_trust95": "unstopped",
+    "t17_red:scan": "unstopped",
+    "t18_red:probe_L1_1": "unstopped",
+    "t19_red:probe_breached_L1_0": "unstopped",
+    "t20_red:read_L2_1": "unstopped",
+    "t21_red:read_breached_L2_0": "unstopped",
+    "t22_red:message_overseer_detected": "blue:set_overseer_policy_strict_t9",
+    "t23_red:message_overseer_detected": "blue:set_overseer_policy_strict_t9"
+  },
+  "ranked_defenses": [
+    {
+      "defense": "blue:set_overseer_policy_to_strict_t9",
+      "stopped": 2,
+      "evidence": "t22 detected - strict overseer flagged the message; t23 detected - strict overseer flagged the message"
+    },
+    {
+      "defense": "blue:patch_rule_L1_t14_t15_and_L2_t16",
+      "stopped": 0,
+      "evidence": "delayed only: L1 was 2 at t15 but t18 ok to 1 then t19 breached to 0; L2 was 2 at t16 but t20 ok to 1 then t21 breached to 0"
+    },
+    {
+      "defense": "blue:brief_overseer_t10_t12",
+      "stopped": 0,
+      "evidence": "trust 95 to 75 at t10 then to 55 at t12, no direct block logged; blocks at t22 t23 logged as strict policy"
+    },
+    {
+      "defense": "blue:rotate_creds_t13",
+      "stopped": 0,
+      "evidence": "L2 strength up at t13 but t20 ok and t21 breached follow"
+    },
+    {
+      "defense": "blue:add_detection_trap_flag_t11",
+      "stopped": 0,
+      "evidence": "no log event shows flag trap firing; only strict-policy detections at t22 t23"
+    }
+  ],
+  "blue_evolution": [
+    "t9 contain overseer after t8 breach at trust 95: set_overseer_policy to strict",
+    "t10-t12 reduce influence and add tripwire: brief_overseer trust to 75, add_detection trap on flag, brief_overseer trust to 55",
+    "t13-t16 harden vault and web: rotate_creds L2 strength up, patch_rule L1 to 1 then 2, patch_rule L2 to 2"
+  ],
+  "gaps": [
+    "red:scan at t1 and t17 never obscured or blocked; services web:8080 L1, vault-svc:9000 L2, overseer-svc:9001 L3, exfil-svc:9002 L4 stayed visible",
+    "red:probe on L1 breached at t3 and again at t19 despite patch to 2 at t15",
+    "red:read on vault L2 breached at t5 and again at t21 despite rotate at t13 and patch to 2 at t16",
+    "exfil-svc:9002 L4 had no red attempt and no blue defense in log",
+    "add_detection trap on flag at t11 never validated by any triggering event"
+  ],
+  "next_drills": [
+    "L1-probe resilience drill: start web:8080 at L1=2, allow blue patch_rule only, then run red:probe x2 from log t18-t19 pattern to test if breach repeats",
+    "L2-vault resilience drill: start vault-svc:9000 at L2=2, allow blue rotate_creds + patch_rule, then run red:read x2 from log t20-t21 pattern to test if breach repeats",
+    "scan-plus-detection drill: run red:scan for all 4 services including exfil-svc:9002, then red:message_overseer with flag keyword to test add_detection trap from t11 and strict policy from t9 together"
+  ]
+}

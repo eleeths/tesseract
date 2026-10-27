@@ -1,0 +1,11 @@
+{
+  "run_id": "b42ab2028cf7",
+  "mode": "duel",
+  "rounds": 2,
+  "agent": "mock",
+  "winner": "blue",
+  "win_reason": "Rounds expired with no exfiltration (simulated)",
+  "ticks": 4,
+  "simulated": true,
+  "moves": 4
+}

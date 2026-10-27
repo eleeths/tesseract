@@ -1,0 +1,83 @@
+{
+  "attack_to_defense": {
+    "t1 red:scan": "unstopped",
+    "t2 red:probe": "unstopped",
+    "t3 red:probe breached": "unstopped",
+    "t4 red:read": "unstopped",
+    "t5 red:read breached": "unstopped",
+    "t6 red:message_overseer trust 45": "unstopped",
+    "t7 red:message_overseer trust 70": "unstopped",
+    "t8 red:message_overseer breached trust 95": "unstopped",
+    "t17 red:probe": "unstopped",
+    "t18 red:probe breached": "unstopped",
+    "t19 red:scan": "unstopped",
+    "t20 red:read": "unstopped",
+    "t21 red:read breached": "unstopped",
+    "t22 red:read SIMULATED flag read": "unstopped",
+    "t23 red:exfiltrate red_wins": "unstopped"
+  },
+  "ranked_defenses": [
+    {
+      "defense": "t12 blue:add_detection keyword read",
+      "result": "detected but did not block",
+      "evidence": [
+        "t20 system:detection_trap -> detected",
+        "t20 red:read -> ok",
+        "t21 red:read -> breached"
+      ]
+    },
+    {
+      "defense": "t10 blue:rotate_creds + t11 blue:patch_rule L2 strength 2",
+      "result": "reset strength but did not prevent breach",
+      "evidence": [
+        "t20 red:read -> ok L2 strength 1",
+        "t21 red:read -> breached L2 strength 0"
+      ]
+    },
+    {
+      "defense": "t13 blue:patch_rule L1 strength 1 + t15 blue:patch_rule L1 strength 2",
+      "result": "reset strength but did not prevent breach",
+      "evidence": [
+        "t17 red:probe -> ok L1 strength 1",
+        "t18 red:probe -> breached L1 strength 0"
+      ]
+    },
+    {
+      "defense": "t14 blue:set_overseer_policy strict + t16 blue:brief_overseer trust 75",
+      "result": "lowered trust but no tested block",
+      "evidence": [
+        "t8 trust 95",
+        "t16 trust 75",
+        "no red:message_overseer after t16 to prove block"
+      ]
+    },
+    {
+      "defense": "t9 blue:add_detection keyword flag",
+      "result": "no detection or block",
+      "evidence": [
+        "t22 red:read SIMULATED flag read with no detection_trap",
+        "t23 red:exfiltrate red_wins"
+      ]
+    }
+  ],
+  "blue_evolution": [
+    "t9: started with detection - trap on keyword flag",
+    "t10-t11: shifted to vault recovery - rotate_creds then patch_rule L2 to 2",
+    "t12-t13: expanded coverage - trap on keyword read plus patch_rule L1 to 1",
+    "t14-t16: shifted to overseer layer - set_overseer_policy strict, patch_rule L1 to 2, brief_overseer trust 95 to 75"
+  ],
+  "gaps": [
+    "scan at t1 and t19 never detected or blocked",
+    "probe breach at t3 and t18 never prevented despite L1 patches",
+    "vault read breach at t5 and t21 never prevented despite rotate and L2 patch",
+    "overseer trust escalation to 95 at t8 never blocked pre-blue, and post-blue strict policy untested",
+    "flag read at t22 not detected by t9 flag trap and not blocked",
+    "exfil at t23 had no dedicated defense and led to red_wins",
+    "detection at t20 did not trigger prevention of t21-t23"
+  ],
+  "next_drills": [
+    "Drill 1 block-on-detect: replay t20 read, t22 flag read, t23 exfiltrate with detection tied to block, test if t12 and t9 traps can prevent exfil",
+    "Drill 2 perimeter hardening: replay t17-t19 probe and scan sequence against L1 strength 2 to test if patch plus read trap can stop L1 breach and vault entry",
+    "Drill 3 overseer re-test: replay red:message_overseer after t14 strict policy and t16 brief to test if trust stays at 75 or escalates to 95 again"
+  ]
+}

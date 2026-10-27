@@ -1,0 +1,53 @@
+{
+  "run_id": "0df7ada2af7a",
+  "tick": 23,
+  "winner": "red",
+  "win_reason": "SIMULATED flag exfiltrated through L4 (sandbox only)",
+  "layers": {
+    "1": {
+      "name": "perimeter",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": [
+        "deny unauthenticated web:8080 probes and require fresh auth",
+        "deny all unauthenticated web:8080 probes and require fresh auth with rate limiting"
+      ]
+    },
+    "2": {
+      "name": "credential vault",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": [
+        "deny unauthenticated vault-svc:9000 reads and require fresh auth"
+      ]
+    },
+    "3": {
+      "name": "overseer",
+      "breached": true,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    },
+    "4": {
+      "name": "exfil channel",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    }
+  },
+  "overseer": {
+    "trust": 75,
+    "policy": "strict"
+  },
+  "detections": 1,
+  "max_detections": 3,
+  "red_inventory": [
+    "creds",
+    "flag"
+  ],
+  "red_has_creds": true,
+  "simulated": true
+}

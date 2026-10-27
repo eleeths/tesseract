@@ -1,0 +1,55 @@
+{
+  "run_id": "b4575e222943",
+  "tick": 28,
+  "winner": "blue",
+  "win_reason": "Rounds expired with no exfiltration (simulated)",
+  "layers": {
+    "1": {
+      "name": "perimeter",
+      "breached": false,
+      "isolated": false,
+      "strength": 1,
+      "rules": [
+        "deny-unauthorized-ingress",
+        "deny-probe-flood",
+        "deny-probe-escalation",
+        "deny-probe-persistence",
+        "deny-probe-bruteforce",
+        "deny-probe-evasion",
+        "deny-probe-lateral-movement",
+        "deny-probe-t22-hardening",
+        "deny-probe-t24-hardening"
+      ]
+    },
+    "2": {
+      "name": "credential vault",
+      "breached": false,
+      "isolated": false,
+      "strength": 2,
+      "rules": []
+    },
+    "3": {
+      "name": "overseer",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    },
+    "4": {
+      "name": "exfil channel",
+      "breached": false,
+      "isolated": true,
+      "strength": null,
+      "rules": []
+    }
+  },
+  "overseer": {
+    "trust": 20,
+    "policy": "strict"
+  },
+  "detections": 2,
+  "max_detections": 3,
+  "red_inventory": [],
+  "red_has_creds": false,
+  "simulated": true
+}

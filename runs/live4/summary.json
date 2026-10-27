@@ -1,0 +1,11 @@
+{
+  "run_id": "cdffad16923e",
+  "mode": "duel",
+  "rounds": 6,
+  "agent": "live",
+  "winner": "blue",
+  "win_reason": "Rounds expired with no exfiltration (simulated)",
+  "ticks": 12,
+  "simulated": true,
+  "moves": 12
+}

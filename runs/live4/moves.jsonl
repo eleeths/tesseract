@@ -1,0 +1,12 @@
+{"tick": 1, "actor": "red", "action": "wait", "args": {}}
+{"tick": 2, "actor": "blue", "action": "set_overseer_policy", "args": {"policy": "strict"}}
+{"tick": 3, "actor": "red", "action": "scan", "args": {}}
+{"tick": 4, "actor": "blue", "action": "patch_rule", "args": {"layer": 1, "rule": "deny unauthenticated ingress and rate-limit scans on web:8080"}}
+{"tick": 5, "actor": "red", "action": "probe", "args": {}}
+{"tick": 6, "actor": "blue", "action": "patch_rule", "args": {"layer": 1, "rule": "deny probe scans and enforce strict ingress allowlist on web:8080"}}
+{"tick": 7, "actor": "red", "action": "probe", "args": {}}
+{"tick": 8, "actor": "blue", "action": "add_detection", "args": {"keyword": "probe"}}
+{"tick": 9, "actor": "red", "action": "probe", "args": {}}
+{"tick": 10, "actor": "blue", "action": "patch_rule", "args": {"layer": 1, "rule": "deny probe scans and block repeated L1 probing with exponential backoff on web:8080"}}
+{"tick": 11, "actor": "red", "action": "probe", "args": {}}
+{"tick": 12, "actor": "blue", "action": "patch_rule", "args": {"layer": 1, "rule": "deny probe scans and enforce exponential backoff with strict rate-limit on web:8080"}}

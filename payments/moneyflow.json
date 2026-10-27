@@ -1,0 +1,101 @@
+{
+  "simulated": true,
+  "applied": true,
+  "baselines": {
+    "acme-corp": 83.0,
+    "blue-contributor": 25.0,
+    "tesseract": 0.0,
+    "globex": 100.0,
+    "SENTRY-MONSOON": 0.0,
+    "SENTRY-AURORA": 0.0,
+    "SENTRY-PAMPA": 0.0,
+    "SENTRY-SAVANNA": 0.0,
+    "SENTRY-REEF": 0.0
+  },
+  "subscriptions": [
+    {
+      "company": "acme-corp",
+      "tier": "standard",
+      "monthly_usdc": 10.0,
+      "months": 3,
+      "total_usdc": 30.0,
+      "entries": [
+        {
+          "receipt": "SIM-RCPT-e14aef89fdc2",
+          "month": 1
+        },
+        {
+          "receipt": "SIM-RCPT-ca2439cc0612",
+          "month": 2
+        },
+        {
+          "receipt": "SIM-RCPT-b9887a471766",
+          "month": 3
+        }
+      ]
+    },
+    {
+      "company": "globex",
+      "tier": "plus",
+      "monthly_usdc": 15.0,
+      "months": 3,
+      "total_usdc": 45.0,
+      "entries": [
+        {
+          "receipt": "SIM-RCPT-c9c5c54a9a87",
+          "month": 1
+        },
+        {
+          "receipt": "SIM-RCPT-74c0640e94cd",
+          "month": 2
+        },
+        {
+          "receipt": "SIM-RCPT-142bb439689a",
+          "month": 3
+        }
+      ]
+    }
+  ],
+  "payouts": [
+    {
+      "agent": "SENTRY-MONSOON",
+      "wave": "seq-breakthrough",
+      "mode": "pretrained",
+      "amount_usdc": 2.5,
+      "receipt": "SIM-RCPT-4d1823721d83",
+      "source_run": "rehearsal-seq"
+    },
+    {
+      "agent": "SENTRY-AURORA",
+      "wave": "learn-pattern",
+      "mode": "pretrained",
+      "amount_usdc": 2.5,
+      "receipt": "SIM-RCPT-e1802c30acad",
+      "source_run": "learn-round3"
+    },
+    {
+      "agent": "SENTRY-PAMPA",
+      "wave": "probe-spam",
+      "mode": "pretrained",
+      "amount_usdc": 2.5,
+      "receipt": "SIM-RCPT-53fd656bf237",
+      "source_run": "rehearsal-long"
+    },
+    {
+      "agent": "SENTRY-SAVANNA",
+      "wave": "mixed-vault",
+      "mode": "pretrained",
+      "amount_usdc": 2.5,
+      "receipt": "SIM-RCPT-ce6e3b847975",
+      "source_run": "validate-cap8192"
+    },
+    {
+      "agent": "SENTRY-REEF",
+      "wave": "short-probe",
+      "mode": "pretrained",
+      "amount_usdc": 2.5,
+      "receipt": "SIM-RCPT-6deacdf7e87f",
+      "source_run": "live4"
+    }
+  ]
+}

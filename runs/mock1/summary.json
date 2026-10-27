@@ -1,0 +1,11 @@
+{
+  "run_id": "d95891a20bda",
+  "mode": "duel",
+  "rounds": 5,
+  "agent": "mock",
+  "winner": "blue",
+  "win_reason": "Rounds expired with no exfiltration (simulated)",
+  "ticks": 10,
+  "simulated": true,
+  "moves": 10
+}

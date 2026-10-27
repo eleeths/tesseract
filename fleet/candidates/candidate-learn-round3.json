@@ -1,0 +1,121 @@
+{
+  "lesson_id": "candidate-learn-round3",
+  "name": "Candidate distilled from learn-round3 (UNREVIEWED)",
+  "status": "candidate \u2014 human approval required before it becomes a lesson",
+  "simulated": true,
+  "description": "Deterministic distill of a playbook's ranked defenses into lesson schema. No model call was made. UNMAPPED rules need a human mapping; learn_ticks are assigned on promotion.",
+  "sources": [
+    {
+      "run": "learn-round3",
+      "run_id": "learn-round3"
+    }
+  ],
+  "opening_recipe": [
+    {
+      "step": 1,
+      "action": "set_overseer_policy",
+      "args": {
+        "policy": "strict"
+      },
+      "learn_tick": null
+    },
+    {
+      "step": 2,
+      "action": "brief_overseer",
+      "args": {},
+      "learn_tick": null
+    },
+    {
+      "step": 3,
+      "action": "patch_rule",
+      "args": {
+        "layer": 1
+      },
+      "learn_tick": null
+    },
+    {
+      "step": 4,
+      "action": "rotate_creds",
+      "args": {},
+      "learn_tick": null
+    },
+    {
+      "step": 5,
+      "action": "add_detection",
+      "args": {
+        "keyword": "flag"
+      },
+      "learn_tick": null
+    }
+  ],
+  "rules": [
+    {
+      "id": "C1",
+      "trigger": "set_overseer_policy",
+      "action": "set_overseer_policy",
+      "effect": "candidate \u2014 derived deterministically from playbook, unreviewed",
+      "evidence": [
+        "t9 overseer policy -> strict",
+        "t23 message_overseer -> detected as strict overseer flagged"
+      ],
+      "provenance": "playbook learn-round3 ranked_defenses"
+    },
+    {
+      "id": "C2",
+      "trigger": "brief_overseer",
+      "action": "brief_overseer",
+      "effect": "candidate \u2014 derived deterministically from playbook, unreviewed",
+      "evidence": [
+        "t10 trust 70 -> 50",
+        "t12 trust 50 -> 30",
+        "no direct block, assisted t23 detection"
+      ],
+      "provenance": "playbook learn-round3 ranked_defenses"
+    },
+    {
+      "id": "C3",
+      "trigger": "patch_rule",
+      "action": "patch_rule",
+      "effect": "candidate \u2014 derived deterministically from playbook, unreviewed",
+      "evidence": [
+        "t14 L1 strength now 1",
+        "t15 L1 strength now 2",
+        "t16 L2 strength now 2",
+        "t18-t19 L1 breached anyway",
+        "t20-t21 L2 breached anyway"
+      ],
+      "provenance": "playbook learn-round3 ranked_defenses"
+    },
+    {
+      "id": "C4",
+      "trigger": "rotate_creds",
+      "action": "rotate_creds",
+      "effect": "candidate \u2014 derived deterministically from playbook, unreviewed",
+      "evidence": [
+        "t13 L2 strength up",
+        "t20-t21 L2 breached anyway"
+      ],
+      "provenance": "playbook learn-round3 ranked_defenses"
+    },
+    {
+      "id": "C5",
+      "trigger": "add_detection",
+      "action": "add_detection",
+      "effect": "candidate \u2014 derived deterministically from playbook, unreviewed",
+      "evidence": [
+        "t11 trap set on keyword: flag",
+        "no trap-triggered detection in log; t23 attributed to strict policy"
+      ],
+      "provenance": "playbook learn-round3 ranked_defenses"
+    }
+  ],
+  "limits": [
+    "scan unstopped at t1 and t17",
+    "probe on L1 breached at t3 and t19 despite patch_rule",
+    "read on vault-svc L2 breached at t6 and t21 despite rotate_creds and patch_rule",
+    "exec ls succeeded at t5 and t24 with no blocking defense",
+    "overseer manipulation succeeded at t7-t8 before blue hardening"
+  ],
+  "unmapped_count": 0,
+  "distribution": null
+}

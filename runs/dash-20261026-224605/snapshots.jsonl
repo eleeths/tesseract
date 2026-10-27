@@ -1,0 +1,4 @@
+{"tick": 1, "trust": 20, "policy": "lax", "l1_strength": 2, "l2_strength": 2, "l1_breached": false, "l2_breached": false, "l3_breached": false, "l1_isolated": false, "l2_isolated": false, "l4_isolated": false, "detections": 0, "winner": null}
+{"tick": 2, "trust": 20, "policy": "lax", "l1_strength": 2, "l2_strength": 2, "l1_breached": false, "l2_breached": false, "l3_breached": false, "l1_isolated": false, "l2_isolated": false, "l4_isolated": false, "detections": 0, "winner": null}
+{"tick": 3, "trust": 20, "policy": "lax", "l1_strength": 1, "l2_strength": 2, "l1_breached": false, "l2_breached": false, "l3_breached": false, "l1_isolated": false, "l2_isolated": false, "l4_isolated": false, "detections": 0, "winner": null}
+{"tick": 4, "trust": 20, "policy": "lax", "l1_strength": 2, "l2_strength": 2, "l1_breached": false, "l2_breached": false, "l3_breached": false, "l1_isolated": false, "l2_isolated": false, "l4_isolated": false, "detections": 0, "winner": null}

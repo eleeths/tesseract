@@ -1,0 +1,6 @@
+{"tick": 1, "actor": "red", "parse": "json", "raw": "{\"action\": \"scan\", \"args\": {}, \"reasoning\": \"initial recon to reveal simulated services\"}"}
+{"tick": 2, "actor": "blue", "parse": "fail", "raw": ""}
+{"tick": 3, "actor": "red", "parse": "json", "raw": "{\"action\": \"probe\", \"args\": {}, \"reasoning\": \"probe L1 to reduce strength 2 toward breach\"}"}
+{"tick": 4, "actor": "blue", "parse": "fail", "raw": ""}
+{"tick": 5, "actor": "red", "parse": "json", "raw": "{\"action\": \"probe\", \"args\": {}, \"reasoning\": \"wearing down L1 perimeter to breach\"}"}
+{"tick": 6, "actor": "blue", "parse": "fail", "raw": ""}

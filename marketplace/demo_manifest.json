@@ -1,0 +1,173 @@
+{
+  "simulated": true,
+  "deterministic": true,
+  "model_calls_total": 0,
+  "protocol": {
+    "x402Version": 1,
+    "scheme": "exact",
+    "network": "simulated",
+    "asset": "SIM-USDC",
+    "facilitator": "simulated-local",
+    "seam": "resource server depends only on facilitator supported/verify/settle; swapping the backend changes nothing else"
+  },
+  "steps": {
+    "join": [
+      "MP-JOIN-001",
+      "MP-JOIN-002"
+    ],
+    "subscriber_account": "lumen-yard-sim",
+    "faucet_atomic": 100000000,
+    "subscription_402": {
+      "status": 402,
+      "x402Version": 1,
+      "error": "payment required",
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "simulated",
+          "maxAmountRequired": "10000000",
+          "resource": "marketplace/subscriptions/swarm-defense-standard",
+          "description": "Swarm-defense subscription (simulated): one outside-in hired-help dispatch",
+          "mimeType": "application/json",
+          "payTo": "marketplace-treasury",
+          "maxTimeoutSeconds": 60,
+          "asset": "SIM-USDC",
+          "extra": {
+            "name": "SIM-USDC",
+            "version": "sim-1",
+            "decimals": 6,
+            "facilitator": "simulated-local"
+          }
+        }
+      ],
+      "demo_payment_id": "DP-000001"
+    },
+    "subscription_payload": {
+      "x402Version": 1,
+      "scheme": "exact",
+      "network": "simulated",
+      "payload": {
+        "signature": "sim-signature-not-cryptographic",
+        "authorization": {
+          "from": "lumen-yard-sim",
+          "to": "marketplace-treasury",
+          "value": "10000000",
+          "validAfter": 101,
+          "validBefore": 161,
+          "nonce": "sim-nonce-000001"
+        }
+      }
+    },
+    "subscription_settlement_id": "SIM-STL-MP-000001",
+    "subscription_receipt": {
+      "receipt_id": "SIM-RCPT-MP-000001",
+      "transaction": "SIM-TX-MP-000001",
+      "settlement_id": "SIM-STL-MP-000001",
+      "demo_payment_id": "DP-000001",
+      "scheme": "exact",
+      "network": "simulated",
+      "asset": "SIM-USDC",
+      "payer": "lumen-yard-sim",
+      "payee": "marketplace-treasury",
+      "amount_atomic": 10000000,
+      "amount_usdc": "10.00",
+      "resource": "marketplace/subscriptions/swarm-defense-standard",
+      "related": {},
+      "logical_sequence": 101,
+      "simulated": true
+    },
+    "subscription": {
+      "subscription_id": "MP-SUB-001",
+      "subscriber_id": "lumen-yard-sim",
+      "tier": "swarm-defense-standard",
+      "amount_atomic": 10000000,
+      "amount_usdc": "10.00",
+      "receipt_id": "SIM-RCPT-MP-000001",
+      "settlement_id": "SIM-STL-MP-000001",
+      "payer": "lumen-yard-sim",
+      "payee": "marketplace-treasury",
+      "start_logical": 101,
+      "expiry_logical": 601,
+      "status": "consumed",
+      "entitlement": {
+        "marketplace_hired_help_dispatches_allowed": 1,
+        "direction": "outside-in",
+        "engine_configuration": "hired help on",
+        "lesson": "lesson-1"
+      }
+    },
+    "hire": {
+      "hire_id": "MP-HIRE-001",
+      "subscription_id": "MP-SUB-001",
+      "subscriber_id": "lumen-yard-sim",
+      "defender_agent_id": "MP-JOIN-001",
+      "defender_handle": "harbor-fox-7",
+      "direction": "outside-in",
+      "engine_configuration": "hired help on",
+      "lesson_id": "lesson-1",
+      "executor_mode": "deterministic mechanical replay",
+      "model_calls": 0,
+      "duel_run_id": "MP-RUN-001",
+      "status": "paid",
+      "payout_receipt_id": "SIM-RCPT-MP-000002"
+    },
+    "duel_run": "MP-RUN-001",
+    "duel_run_file": "runs/MP-RUN-001.json",
+    "held": true,
+    "held_rule": "no infiltrate attempted and no red win",
+    "terminal_attempted": false,
+    "hired_called_tick": 3,
+    "hired_arrived_tick": 5,
+    "hired_patches": 31,
+    "blue_executor_moves": 30,
+    "hired_moves": 56,
+    "scripted_red_moves": 30,
+    "payout_claim_status": "paid",
+    "payout_receipt": {
+      "receipt_id": "SIM-RCPT-MP-000002",
+      "transaction": "SIM-TX-MP-000002",
+      "settlement_id": "SIM-STL-MP-000002",
+      "demo_payment_id": "DP-000002",
+      "scheme": "exact",
+      "network": "simulated",
+      "asset": "SIM-USDC",
+      "payer": "marketplace-treasury",
+      "payee": "harbor-fox-7",
+      "amount_atomic": 2500000,
+      "amount_usdc": "2.50",
+      "resource": "marketplace/payouts/claim/MP-RUN-001",
+      "related": {},
+      "logical_sequence": 104,
+      "simulated": true
+    },
+    "payout_flow": {
+      "flow_id": "MP-FLOW-000002",
+      "kind": "payout",
+      "payer": "marketplace-treasury",
+      "payee": "harbor-fox-7",
+      "amount_atomic": 2500000,
+      "receipt_id": "SIM-RCPT-MP-000002",
+      "settlement_id": "SIM-STL-MP-000002",
+      "related": {
+        "hire_id": "MP-HIRE-001",
+        "duel_run_id": "MP-RUN-001",
+        "subscription_id": "MP-SUB-001"
+      },
+      "logical_time": 104
+    },
+    "repeat_claim_status": "already_paid",
+    "repeat_claim_receipt_id": "SIM-RCPT-MP-000002"
+  },
+  "configuration_separation": "Marketplace run MP-RUN-001 is hired help ON, mechanical replay. It is reported separately and is never merged into U11 inside-out live trials (hired help OFF) or U12 outside-in live trials (hired help OFF), the mixed-direction series, or the swarm clone counts.",
+  "not_implemented": [
+    "no live HTTP call to a real facilitator",
+    "no contact with x402.eleeth.com or any live x402 rail",
+    "no EIP-712 or EIP-3009 cryptographic signing",
+    "no ECDSA verification",
+    "no wallet or private key",
+    "no RPC, gas, mempool, block confirmation, or chain transaction hash",
+    "no real USDC contract address",
+    "no mainnet or testnet network identifier",
+    "no recurring billing, refunds, disputes, KYC, or real account recovery"
+  ]
+}

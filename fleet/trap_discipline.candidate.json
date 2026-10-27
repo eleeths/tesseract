@@ -1,0 +1,8 @@
+{
+  "rule_id": "R8-CANDIDATE",
+  "trigger": "own trap is armed",
+  "action": "do_not_set_trap_until_trap_fired_or_consumed",
+  "evidence": "scoreboard: trap overwritten in 4/5 briefed runs",
+  "status": "awaiting_coordinator_approval",
+  "applies_to_lessons": ["lesson-1"]
+}

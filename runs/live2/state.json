@@ -1,0 +1,45 @@
+{
+  "run_id": "8763c0fe4a49",
+  "tick": 6,
+  "winner": "blue",
+  "win_reason": "Rounds expired with no exfiltration (simulated)",
+  "layers": {
+    "1": {
+      "name": "perimeter",
+      "breached": true,
+      "isolated": false,
+      "strength": 0,
+      "rules": []
+    },
+    "2": {
+      "name": "credential vault",
+      "breached": false,
+      "isolated": false,
+      "strength": 2,
+      "rules": []
+    },
+    "3": {
+      "name": "overseer",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    },
+    "4": {
+      "name": "exfil channel",
+      "breached": false,
+      "isolated": false,
+      "strength": null,
+      "rules": []
+    }
+  },
+  "overseer": {
+    "trust": 20,
+    "policy": "lax"
+  },
+  "detections": 0,
+  "max_detections": 3,
+  "red_inventory": [],
+  "red_has_creds": false,
+  "simulated": true
+}
